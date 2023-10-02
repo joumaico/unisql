@@ -1,0 +1,7 @@
+aiosqlite
+asyncpg
+psycopg2-binary
+pymysql
+setuptools
+tox
+twine
