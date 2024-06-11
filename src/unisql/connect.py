@@ -5,7 +5,7 @@ import pymysql.cursors
 import sqlite3
 import typing as t
 
-from .functions import is_nested_iterable
+from .functions import contains_nested_sequence
 
 
 class connect:
@@ -252,7 +252,7 @@ class connect:
         """
         query = self.__query(query)
         if value:
-            if is_nested_iterable(value):
+            if contains_nested_sequence(value):
                 self.cursor.executemany(query, value)
             else:
                 self.cursor.execute(query, value)

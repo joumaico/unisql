@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="unisql",
-    version="1.0.0",
+    version="1.0.1",
     author="Joumaico Maulas",
     author_email="joumaico@yahoo.com",
     description="SQL Database Wrapper",

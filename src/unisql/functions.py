@@ -1,23 +1,36 @@
 import typing as t
 
 
-def is_nested_iterable(value: t.Any) -> bool:
+def contains_nested_sequence(values: t.Any) -> bool:
     """
-    Checks if the given value is an iterable of iterables.
+    Check if the given value contains a nested sequence (list or tuple).
 
     Parameters
     ----------
-    value : Any
-        The value to be checked.
+    values : Any
+        The value to be checked for nested sequences.
 
     Returns
     -------
     bool
-        True if the value is an iterable of iterables, False otherwise.
+        True if the value contains a nested sequence, False otherwise.
+
+    Examples
+    --------
+    >>> contains_nested_sequence([1, 2, (3, 4)])
+    True
+    >>> contains_nested_sequence([1, 2, 3])
+    False
+    >>> contains_nested_sequence((1, 2, [3, 4]))
+    True
+    >>> contains_nested_sequence((1, 2, 3))
+    False
     """
-    if isinstance(value, t.Iterable):
-        for item in value:
-            if not isinstance(item, t.Iterable):
+    if isinstance(values, tuple) or isinstance(values, list):
+        for value in values:
+            if isinstance(value, tuple) or isinstance(value, list):
+                return True
+            else:
                 return False
-        return True
-    return False
+    else:
+        return False
