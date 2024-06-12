@@ -3,7 +3,7 @@ import asyncpg
 import re
 import typing as t
 
-from .functions import is_nested_iterable
+from .functions import contains_nested_sequence
 
 
 class connect:
@@ -213,7 +213,7 @@ class connect:
         query = self.__query(query)
         if self.engine == "sqlite":
             if value:
-                if is_nested_iterable(value):
+                if contains_nested_sequence(value):
                     await self.cursor.executemany(query, value)
                 else:
                     await self.cursor.execute(query, value)
@@ -222,7 +222,7 @@ class connect:
             await self.connection.commit()
         elif self.engine == "postgresql":
             if value:
-                if is_nested_iterable(value):
+                if contains_nested_sequence(value):
                     await self.connection.executemany(query, value)
                 else:
                     await self.connection.execute(query, *value)
