@@ -7,7 +7,7 @@ UniSQL is a software package that offers a unified interface for connecting to a
 ```
 Dependencies:
 
-- Python 3.7, 3.8, 3.9, 3.11, 3.12
+- Python 3.8, 3.9, 3.11, 3.12, 3.13
 
 Installation:
 
